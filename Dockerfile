@@ -4,7 +4,10 @@ MAINTAINER Lucas Carlson <lucas@rufy.com>
 # Let's get serf
 RUN apt-get update -q
 RUN apt-get install -qy build-essential git supervisor unzip
-ADD https://dl.bintray.com/mitchellh/serf/0.4.1_linux_amd64.zip serf.zip
+ADD https://dl.bintray.com/mitchellh/serf/0.4.5_linux_amd64.zip serf.zip
+ADD 0.4.5_SHA256SUMS 0.4.5_SHA256SUMS
+RUN shasum -a 256 -c 0.4.5_SHA256SUMS
+
 RUN unzip serf.zip
 RUN rm serf.zip
 RUN mv serf /usr/bin/
